@@ -1,4 +1,7 @@
-from app.db import dbConfig
+import sys
+from os.path import pardir
+sys.path.insert(0, pardir)
+from db import dbConfig
 from flask import Flask,render_template
 
 app = Flask(__name__)
