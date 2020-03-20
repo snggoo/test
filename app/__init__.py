@@ -1,12 +1,14 @@
 import sys
-sys.path.insert(0, '/var/www/dronapplication/db')
+from os.path import pardir
+sys.path.insert(0, pardir)
+from db import dbConfig
 from flask import Flask,render_template
-import dbConfig
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     db = dbConfig.Database()
-    sql = "select * from test"
+    sql = "select * from mode"
     row = db.executeAll(sql)
-    return render_template('index.html',result=None,resultData=row,resultUPDATE=None)
+    return render_template('index.html',resultData=row)
